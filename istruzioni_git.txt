@@ -1,0 +1,9 @@
+Dopo aver create il repository remoto e quello locale lanciare il comando 
+
+git checkout --track origin/origin
+
+sarà creato un ramo locale origin che traccia il ramo remoto origin.
+
+A questo punto si può eliminare il ramo locale master con il comando 
+
+git branch -d master
