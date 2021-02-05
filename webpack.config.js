@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 
 module.exports = {
@@ -31,6 +32,7 @@ module.exports = {
     //mode: 'development', // production(codice minimizzato) o development
     devtool: 'source-map',
     plugins: [
+        new ESLintPlugin(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "[name].css"
@@ -68,4 +70,9 @@ module.exports = {
             },
         ],
     },
+    externals:{
+        jquery: "jQuery",
+        "@wordpress/blocks": ["wp","blocks"],
+        "@wordpress/i18n": ["wp","i18n"]
+    }
 }
