@@ -36,7 +36,7 @@ module.exports = {
     plugins: [
         new ESLintPlugin(),
         new CleanWebpackPlugin(),
-        //new FixStyleOnlyEntriesPlugin(),
+        new FixStyleOnlyEntriesPlugin(),
         new MiniCssExtractPlugin({
             filename: "[name]-bundle.css",
         }),
