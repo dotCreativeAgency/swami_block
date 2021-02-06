@@ -2,6 +2,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
@@ -12,7 +13,8 @@ module.exports = {
     entry: {
         //editor: "./src/editor.js",
         //script: "./src/script.js",
-        index: './src/index.js',
+        "js/editor": './src/editor.js',
+        "css/style": './src/style.scss.js'
     },
 
     output: {
@@ -21,7 +23,7 @@ module.exports = {
         filename: '[name]-bundle.js', // nome del file
     },
     optimization: {
-        minimize: true,
+        minimize: false,
         minimizer: [
             new TerserPlugin(),
             new CssMinimizerPlugin({
@@ -34,9 +36,10 @@ module.exports = {
     plugins: [
         new ESLintPlugin(),
         new CleanWebpackPlugin(),
+        //new FixStyleOnlyEntriesPlugin(),
         new MiniCssExtractPlugin({
-            filename: "[name].css"
-        })
+            filename: "[name]-bundle.css",
+        }),
     ],
     module: {
         rules: [
@@ -70,9 +73,13 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        fallback: { "path": require.resolve("path-browserify") }
+    },
     externals:{
         jquery: "jQuery",
         "@wordpress/blocks": ["wp","blocks"],
-        "@wordpress/i18n": ["wp","i18n"]
+        "@wordpress/i18n": ["wp","i18n"],
+        "@wordpress/block-editor": ["wp","blockEditor"]
     }
 }

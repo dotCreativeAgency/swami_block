@@ -37,6 +37,11 @@ npm install css-minimizer-webpack-plugin --save-dev
 # https://webpack.js.org/plugins/css-minimizer-webpack-plugin/
 # https://github.com/webpack-contrib/css-minimizer-webpack-plugin
 
+npm install -D webpack-fix-style-only-entries
+# Questo plugin ti permette di caricare direttamente i file scss o css
+# risolvendo il problema della creazione di un file js extra
+# https://github.com/fqborges/webpack-fix-style-only-entries
+
 npm install --save-dev clean-webpack-plugin
 # https://github.com/johnagan/clean-webpack-plugin
 
@@ -51,6 +56,9 @@ npm install @wordpress/blocks --save
 
 npm install @wordpress/i18n --save
 # https://developer.wordpress.org/block-editor/packages/packages-i18n/
+
+npm install @wordpress/block-editor --save
+# https://developer.wordpress.org/block-editor/packages/packages-block-editor/
 
 npm install jquery
 
